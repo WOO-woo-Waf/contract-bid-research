@@ -14,6 +14,7 @@
 | ContractNLI | <https://github.com/stanfordnlp/contract-nli> | `references/contract-nli/` | `eced6528dd3c1d14d73f9a87df8f7bdbc03126f9` | CC-BY-4.0 | 已拉取 |
 | Docling | <https://github.com/docling-project/docling> | `references/docling/` | `9b454c9e88454d95fd04d538c552a3c07bc3c04d` | MIT（模型权重另审） | 已拉取，仅作备选/对照 |
 | Presidio | <https://github.com/data-privacy-stack/presidio> | `references/presidio/` | `6116c0685c7efb27c40daf90369afabb32c6b911` | MIT | 已拉取 |
+| GBrain | <https://github.com/garrytan/gbrain> | 外部研究仓库 `/root/dev/gbrain-llm-wiki-research/references/gbrain` | `3fafb69b077e602e1286af9cb092ed94455657a8` | MIT | 已有完整源码与专项调研；作为知识投影、混合检索、图关系和检索评测 PoC 候选 |
 | MinerU 生产解析基座 | `/root/dev/mineru-api-docker-upgrade` | 外部已有项目，不重复克隆 | `0dfc9460cd9ab693b9af60ae3fbffd7bc111b062`（本次只读观察） | 自定义 MinerU License，生产需履行条件 | 用户确认已部署；本机无运行容器，公网严格 TLS 探测受自签名证书阻断 |
 
 ## 复现
