@@ -1,0 +1,19 @@
+name: contract-bid-research
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - jupyterlab
+  - numpy
+  - pandas
+  - scikit-learn
+  - pydantic>=2
+  - pyyaml
+  - rapidfuzz
+  - python-docx
+  - pypdf
+  - openpyxl
+  - pytest
+  - pip:
+      - jsonschema>=4.0

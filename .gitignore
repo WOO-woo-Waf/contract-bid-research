@@ -1,0 +1,46 @@
+# Secrets and local environment
+.env
+.env.local
+.env.*.local
+.venv/
+venv/
+.secrets/
+secrets.json
+credentials.json
+api_keys.json
+*.pem
+*.key
+
+# Python, Node.js, build, and test outputs
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage*
+htmlcov/
+node_modules/
+build/
+dist/
+*.egg-info/
+
+# Runtime outputs and local data
+artifacts/
+logs/
+runtime/
+data/
+downloads/
+cache/
+*.db
+*.sqlite3
+*.zip
+*.tar.gz
+
+# Third-party source clones; keep only manifests and research notes in Git
+references/*/
+
+# Browser automation state
+.playwright/
+.puppeteer/
+chrome_cdp_profile*/
+login_profiles/
+user-data-dir/

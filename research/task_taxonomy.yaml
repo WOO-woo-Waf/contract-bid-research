@@ -1,0 +1,47 @@
+schema_version: 1
+formed_at: 2026-08-04
+principles:
+  - every material conclusion must carry page/span evidence
+  - deterministic rules take precedence for dates, amounts, identifiers, and forbidden conditions
+  - model output is review assistance and requires an accountable human approver
+domains:
+  contract_review:
+    tasks:
+      - id: contract.structure_extraction
+        output: clause spans, hierarchy, parties, dates, amounts, obligations
+        metrics: [span_f1, field_exact_match, table_cell_accuracy]
+      - id: contract.risk_detection
+        output: risk item, severity, affected party, rationale, evidence, suggested action
+        metrics: [risk_recall, precision, f1, evidence_precision]
+      - id: contract.playbook_compliance
+        output: policy rule status, deviation, evidence, suggested redline
+        metrics: [macro_f1, critical_rule_recall, grounded_claim_rate]
+      - id: contract.cross_clause_consistency
+        output: contradiction pair, normalized fact, evidence spans
+        metrics: [pair_f1, numeric_exact_match]
+      - id: contract.redline_and_report
+        output: minimally edited clause, change reason, residual risk, report
+        metrics: [acceptance_rate, unsupported_edit_rate, legal_reviewer_score]
+  bid_tender:
+    tasks:
+      - id: bid.requirement_extraction
+        output: requirement matrix with type, score, rejection flag, evidence, owner, due date
+        metrics: [requirement_recall, rejection_item_recall, field_exact_match]
+      - id: bid.global_fact_extraction
+        output: canonical project facts and conflicting source spans
+        metrics: [fact_exact_match, conflict_recall]
+      - id: bid.compliance_matrix
+        output: each requirement mapped to response section and supporting material
+        metrics: [weighted_coverage, orphan_response_rate, evidence_precision]
+      - id: bid.outline_planning
+        output: scored outline, target length, dependencies, source materials
+        metrics: [requirement_coverage, reviewer_score]
+      - id: bid.grounded_generation
+        output: section content with claim-level provenance and controlled commitments
+        metrics: [grounded_claim_rate, unsupported_claim_rate, fact_consistency]
+      - id: bid.rejection_and_duplicate_check
+        output: rejection risks, missing evidence, contradictions, suspicious overlap
+        metrics: [critical_recall, precision, false_alarm_rate]
+      - id: bid.word_export
+        output: reviewable DOCX preserving headings, numbering, tables, images, and citations
+        metrics: [structure_fidelity, visual_regression_pass_rate]
