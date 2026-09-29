@@ -2,6 +2,8 @@
 
 形成日期：2026-08-04
 
+实施状态更新（2026-08-11）：本文的 MinerU 适配、Canonical Document、SQLite 混合检索、GBrain 投影/回链和 Docker 化已形成可运行代码并完成真实模型验证。当前代码现实和使用说明见 [基础设施实施与真实验证状态](CONTRACT_BID_INFRASTRUCTURE_IMPLEMENTATION_AND_VALIDATION_STATUS_2026-08-11.md)。
+
 ## 1. 当前阶段结论
 
 当前阶段只积累后续合同审核和标书撰写可能共同使用的技术能力，不继续展开领域知识、领域任务标签和最终产品设计。
@@ -38,7 +40,7 @@
 
 ### 3.1 MinerU
 
-用户确认 `/root/dev/mineru-api-docker-upgrade` 已部署 MinerU 3.4.4。现有项目已经覆盖：
+用户确认 `../mineru-api-docker-upgrade` 已部署 MinerU 3.4.4。现有项目已经覆盖：
 
 - `POST /v1/process` 和 `GET /v1/jobs/{job_id}` 兼容接口；
 - `POST /tasks`、`GET /tasks/{id}`、`GET /tasks/{id}/result` 官方异步接口；
@@ -49,15 +51,15 @@
 
 证据文档：
 
-- `/root/dev/mineru-api-docker-upgrade/docs/design-architecture/mineru-api-streaming-upgrade/MINERU_SERVICE_API_GUIDE_2026-07-28.md`
-- `/root/dev/mineru-api-docker-upgrade/docs/design-architecture/mineru-api-streaming-upgrade/DOCUMENT_CONTENT_AND_SOURCE_LOCATION_DESIGN_2026-07-27.md`
-- `/root/dev/mineru-api-docker-upgrade/docs/design-architecture/document-parsing-infrastructure/MINERU_DOCUMENT_PARSING_INFRASTRUCTURE_ANALYSIS_2026-07-28.md`
+- `../mineru-api-docker-upgrade/docs/design-architecture/mineru-api-streaming-upgrade/MINERU_SERVICE_API_GUIDE_2026-07-28.md`
+- `../mineru-api-docker-upgrade/docs/design-architecture/mineru-api-streaming-upgrade/DOCUMENT_CONTENT_AND_SOURCE_LOCATION_DESIGN_2026-07-27.md`
+- `../mineru-api-docker-upgrade/docs/design-architecture/document-parsing-infrastructure/MINERU_DOCUMENT_PARSING_INFRASTRUCTURE_ANALYSIS_2026-07-28.md`
 
 当前缺口不是解析能力，而是**把解析结果实现成稳定、可复用的基础文档数据代码**。
 
 ### 3.2 GBrain
 
-本地研究仓库：`/root/dev/gbrain-llm-wiki-research`。
+本地研究仓库：`../gbrain-llm-wiki-research`。
 
 - 项目：`garrytan/gbrain`
 - 固定提交：`3fafb69b077e602e1286af9cb092ed94455657a8`
@@ -79,7 +81,7 @@
 - `references/gbrain/src/core/schema-pack/`：可扩展类型和关系；
 - `references/gbrain/src/core/eval-capture.ts`、`src/commands/eval-replay.ts`：检索回放。
 
-以上路径均相对于 `/root/dev/gbrain-llm-wiki-research/`。
+以上路径均相对于 `../gbrain-llm-wiki-research/`。
 
 ## 4. 推荐技术架构
 

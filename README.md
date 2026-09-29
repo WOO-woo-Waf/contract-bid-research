@@ -8,6 +8,7 @@
 
 ## 导航
 
+- [基础设施实施与真实验证状态（2026-08-11）](docs/design-architecture/contract-bid-research/CONTRACT_BID_INFRASTRUCTURE_IMPLEMENTATION_AND_VALIDATION_STATUS_2026-08-11.md)
 - [当前主文档：技术积累与基础设施设计](docs/design-architecture/contract-bid-research/CONTRACT_BID_TECHNICAL_ACCUMULATION_INFRASTRUCTURE_DESIGN_2026-08-04.md)
 - [领域任务、产品功能与总体设计（远期参考）](docs/design-architecture/contract-bid-research/CONTRACT_BID_DOMAIN_TASK_FUNCTION_INFRASTRUCTURE_DESIGN_2026-08-04.md)
 - [调研总览](docs/design-architecture/contract-bid-research/CONTRACT_BID_RESEARCH_ANALYSIS_2026-08-04.md)
@@ -37,6 +38,30 @@ pytest
 
 本机已创建同名 Conda 环境。真实 API Key 只放在被忽略的 `.env`，不要写进文档、测试或研究数据。
 
+## 已实现的基础设施
+
+```text
+MinerU 公网 /tasks 文件流
+  -> 结果 ZIP 校验与安全解包
+  -> Canonical Document（稳定 ID、Node、Chunk、Asset、SourceAnchor）
+  -> SQLite FTS5 / embedding / RRF / qwen3-rerank
+  -> GBrain Markdown 投影 / PGLite / typed links / graph / 证据回链
+```
+
+CLI 入口为 `contract-bid-infra`。先复制 `.env.example` 为 `.env` 并只在 `.env` 中填写真实密钥：
+
+```bash
+contract-bid-infra config-check
+contract-bid-infra model-smoke
+contract-bid-infra parse /path/to/document.pdf
+contract-bid-infra kb-index data/canonical/<document-id>.json
+contract-bid-infra kb-search "来源锚点" --mode hybrid
+contract-bid-infra gbrain-import data/canonical/<document-id>.json
+contract-bid-infra gbrain-evidence data/canonical/<document-id>.json "如何定位原文"
+```
+
+容器镜像和 Compose 配置见 `Dockerfile`、`compose.yaml`。镜像不包含 `.env`、API Key、客户文件或本地数据库；运行时目录使用 volume，输入目录只读挂载。构建环境若代理只监听 WSL loopback，使用实施状态文档中的 `--network=host` 构建命令。
+
 ## 已有基础设施边界
 
-文档解析统一复用 `/root/dev/mineru-api-docker-upgrade` 中已经部署的 MinerU 3.4.4 服务及其 Canonical Document JSON 设计。本仓不重复建设 OCR、Office/PDF 解析或解析队列；当前主要补齐 MinerU 返回包适配、Canonical Document 构建与 GBrain 投影评测。Docling 只作为长尾格式和回归对照候选。
+文档解析当前通过 `https://mineru.example.invalid` 的公网 `/tasks` 文件流接口调用 MinerU。本仓不重复建设 OCR、Office/PDF 解析或解析队列；`../mineru-api-docker-upgrade` 只作为既有实现和接口设计参考，未被本仓修改。当前公网入口证书不匹配，严格 TLS 调用会在上传前终止，详见实施状态文档。

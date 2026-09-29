@@ -29,11 +29,14 @@ logs/
 runtime/
 data/
 downloads/
+inputs/*
+!inputs/README.md
 cache/
 *.db
 *.sqlite3
 *.zip
 *.tar.gz
+*.zip.part
 
 # Third-party source clones; keep only manifests and research notes in Git
 references/*/

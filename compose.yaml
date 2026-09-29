@@ -1,0 +1,23 @@
+services:
+  contract-bid-infra:
+    image: ${CONTRACT_BID_IMAGE:-contract-bid-infra:20260811-local}
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      CONTRACT_BID_DATA_ROOT: /data
+      CONTRACT_BID_ARTIFACTS_ROOT: /artifacts
+      CONTRACT_BID_KNOWLEDGE_DB: /data/knowledge.sqlite3
+      GBRAIN_REPOSITORY: /opt/gbrain
+      GBRAIN_HOME: /data/gbrain
+    volumes:
+      - contract-bid-data:/data
+      - contract-bid-artifacts:/artifacts
+      - ./inputs:/inputs:ro
+    command: ["config-check"]
+    restart: "no"
+
+volumes:
+  contract-bid-data:
+  contract-bid-artifacts:

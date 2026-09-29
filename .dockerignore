@@ -1,0 +1,13 @@
+.git
+.env
+.pytest_cache
+artifacts
+data
+runtime
+references
+__pycache__
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.zip
